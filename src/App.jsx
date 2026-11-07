@@ -16,6 +16,7 @@ import Experience from './components/Experience'
 import GithubActivity from './components/GithubActivity'
 import PortfolioAssistant from './components/PortfolioAssistant'
 import SceneRail from './components/SceneRail'
+import MobileDock from './components/MobileDock'
 
 const BASE = import.meta.env.BASE_URL
 const loadWorld = () => import('./three/World')
@@ -86,6 +87,7 @@ export default function App() {
       </main>
       <PortfolioAssistant />
       <div className="custom-cursor" aria-hidden="true" />
+      <MobileDock />
     </>
   )
 }

@@ -1860,3 +1860,1222 @@ ol, ul { list-style: none; }
   }
 
 }
+
+
+
+
+
+/* ==========================================
+   MOBILE FLOATING GLASS NAVIGATION
+========================================== */
+
+.mobile-dock {
+  display: none;
+}
+
+/* ==========================================
+   MOBILE NAVIGATION
+========================================== */
+
+@media (max-width: 768px) {
+
+  /* Hide desktop navigation */
+
+  .nav {
+    display: none !important;
+  }
+
+  /* Floating navigation container */
+
+  .mobile-dock {
+    position: fixed;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    left: 50%;
+    bottom: calc(16px + env(safe-area-inset-bottom));
+
+    transform: translateX(-50%);
+
+    width: min(390px, calc(100% - 36px));
+    height: 72px;
+
+    padding: 0 8px;
+
+    z-index: 9999;
+
+    border-radius: 22px;
+
+    background:
+      linear-gradient(
+        145deg,
+        rgba(35, 39, 55, 0.92),
+        rgba(14, 20, 36, 0.94)
+      );
+
+    border: 1px solid rgba(170, 195, 255, 0.17);
+
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+
+    box-shadow:
+      0 12px 40px rgba(0, 0, 0, 0.38),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    isolation: isolate;
+  }
+
+  /* Navigation items */
+
+  .mobile-dock-inner {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+  }
+
+  .mobile-dock-item {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    height: 100%;
+
+    color: rgba(220, 230, 255, 0.72);
+
+    text-decoration: none;
+
+    transition:
+      color 0.3s ease,
+      transform 0.3s ease;
+
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Icons */
+
+  .dock-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 26px;
+    height: 26px;
+
+    transition:
+      transform 0.3s ease,
+      color 0.3s ease;
+  }
+
+  .dock-icon svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  /* Labels */
+
+  .dock-label {
+    font-size: 9px;
+    font-weight: 600;
+
+    letter-spacing: 0.1px;
+
+    opacity: 0.8;
+
+    transition: opacity 0.3s ease;
+  }
+
+  /* Active navigation */
+
+  .mobile-dock-item.is-active {
+    color: #ffffff;
+  }
+
+  .mobile-dock-item.is-active .dock-icon {
+    color: #64dfff;
+
+    transform: translateY(-2px);
+
+    filter: drop-shadow(0 0 7px rgba(70, 190, 255, 0.6));
+  }
+
+  .mobile-dock-item.is-active .dock-label {
+    opacity: 1;
+    color: #8edfff;
+  }
+
+  .dock-active-dot {
+    position: absolute;
+
+    bottom: 5px;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: #62dcff;
+
+    box-shadow: 0 0 8px #62dcff;
+  }
+
+  /* ==========================================
+     CENTER FLOATING BUTTON
+  ========================================== */
+
+  .mobile-dock-item.dock-center {
+    position: relative;
+
+    justify-content: center;
+
+    z-index: 3;
+  }
+
+  .dock-center .dock-icon {
+    width: 48px;
+    height: 48px;
+
+    margin-top: -31px;
+
+    border-radius: 17px;
+
+    background:
+      linear-gradient(
+        145deg,
+        #42dfff,
+        #2877ff
+      );
+
+    color: white;
+
+    box-shadow:
+      0 0 20px rgba(47, 157, 255, 0.45),
+      0 7px 20px rgba(0, 0, 0, 0.35);
+
+    border: 3px solid rgba(20, 35, 60, 0.95);
+
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .dock-center .dock-icon svg {
+    width: 23px;
+    height: 23px;
+  }
+
+  .dock-center .dock-label {
+    margin-top: -2px;
+  }
+
+  .dock-center.is-active .dock-icon {
+    color: white;
+
+    background:
+      linear-gradient(
+        145deg,
+        #64eaff,
+        #3178ff
+      );
+
+    box-shadow:
+      0 0 24px rgba(65, 210, 255, 0.65),
+      0 0 45px rgba(43, 120, 255, 0.3);
+
+    transform: translateY(-2px);
+  }
+
+  /* Center active glow */
+
+  .dock-glow {
+    position: absolute;
+
+    width: 85px;
+    height: 35px;
+
+    top: -2px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    background: rgba(55, 205, 255, 0.16);
+
+    filter: blur(22px);
+
+    pointer-events: none;
+  }
+
+  /* ==========================================
+     CYAN CURVED TOP HIGHLIGHT
+  ========================================== */
+
+  .mobile-dock::before {
+    content: '';
+
+    position: absolute;
+
+    left: 5%;
+    right: 5%;
+
+    top: 0;
+
+    height: 2px;
+
+    border-radius: 50%;
+
+    background:
+      linear-gradient(
+        90deg,
+        transparent,
+        rgba(76, 220, 255, 0.65),
+        #64eaff,
+        rgba(76, 220, 255, 0.65),
+        transparent
+      );
+
+    box-shadow: 0 0 10px rgba(65, 210, 255, 0.6);
+
+    pointer-events: none;
+  }
+
+  /* Center curved highlight */
+
+  .mobile-dock::after {
+    content: '';
+
+    position: absolute;
+
+    width: 65px;
+    height: 12px;
+
+    top: -2px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    border-bottom: 2px solid #62eaff;
+
+    border-radius: 0 0 50% 50%;
+
+    box-shadow: 0 5px 12px rgba(66, 220, 255, 0.45);
+
+    pointer-events: none;
+  }
+
+  /* Tap animation */
+
+  .mobile-dock-item:active .dock-icon {
+    transform: scale(0.88);
+  }
+
+}
+
+
+/* ==========================================
+   SMALL MOBILE DEVICES
+========================================== */
+
+@media (max-width: 380px) {
+
+  .mobile-dock {
+    width: calc(100% - 24px);
+    height: 66px;
+
+    bottom: calc(12px + env(safe-area-inset-bottom));
+  }
+
+  .dock-label {
+    font-size: 8px;
+  }
+
+  .dock-center .dock-icon {
+    width: 43px;
+    height: 43px;
+  }
+
+}
+
+
+/* ==========================================
+   ACCESSIBILITY
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .mobile-dock *,
+  .mobile-dock *::before,
+  .mobile-dock *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  body {
+    padding-bottom: 100px;
+  }
+
+}
+
+
+/* ==========================================
+   PREMIUM MOBILE FLOATING NAVIGATION
+========================================== */
+
+.mobile-dock {
+  display: none;
+}
+
+@media (max-width: 768px) {
+
+  .mobile-dock {
+    position: fixed;
+    left: 50%;
+    bottom: calc(12px + env(safe-area-inset-bottom));
+
+    transform: translateX(-50%);
+
+    width: calc(100% - 36px);
+    max-width: 480px;
+    height: 76px;
+
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    align-items: center;
+
+    padding: 6px 8px;
+
+    background: rgba(12, 23, 45, 0.94);
+
+    border: 1px solid rgba(125, 170, 230, 0.19);
+    border-radius: 23px;
+
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+
+    box-shadow:
+      0 8px 35px rgba(0, 0, 0, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+    z-index: 999;
+  }
+
+  /* NAVIGATION ITEMS */
+
+  .dock-item {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    min-width: 0;
+
+    color: #8999b5;
+
+    text-decoration: none;
+
+    font-size: 9px;
+    font-weight: 600;
+
+    transition: color 0.25s ease;
+  }
+
+  .dock-item svg {
+    width: 19px;
+    height: 19px;
+
+    stroke-width: 1.7;
+
+    transition: all 0.25s ease;
+  }
+
+  .dock-item.is-active {
+    color: #54cfff;
+  }
+
+  .dock-item.is-active svg {
+    filter: drop-shadow(
+      0 0 6px rgba(60, 190, 255, 0.5)
+    );
+  }
+
+  /* ACTIVE DOT */
+
+  .dock-dot {
+    position: absolute;
+
+    bottom: -7px;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: #51d5ff;
+
+    box-shadow: 0 0 8px #51d5ff;
+  }
+
+  /* ======================================
+     CENTER AI BUTTON
+  ====================================== */
+
+  .dock-ai {
+    position: relative;
+
+    width: 49px;
+    height: 49px;
+
+    margin: -16px auto 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+
+    background: linear-gradient(
+      145deg,
+      #42d5ff,
+      #2676ff
+    );
+
+    border: 3px solid #111e37;
+    border-radius: 17px;
+
+    cursor: pointer;
+
+    box-shadow:
+      0 0 0 1px rgba(76, 190, 255, 0.5),
+      0 5px 18px rgba(36, 123, 255, 0.35);
+
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .dock-ai svg {
+    width: 23px;
+    height: 23px;
+  }
+
+  /* Hide AI label */
+
+  .dock-ai span {
+    display: none;
+  }
+
+  .dock-ai:active {
+    transform: scale(0.9);
+    box-shadow: 0 0 25px rgba(50, 160, 255, 0.7);
+  }
+
+  /* ======================================
+     ASSISTANT PANEL
+  ====================================== */
+
+  .assistant-launch {
+    display: none !important;
+  }
+
+  .assistant-panel {
+    position: fixed !important;
+
+    left: 50% !important;
+    bottom: calc(100px + env(safe-area-inset-bottom)) !important;
+
+    transform: translateX(-50%);
+
+    width: calc(100% - 32px);
+    max-width: 420px;
+
+    max-height: 65vh;
+
+    overflow-y: auto;
+
+    border-radius: 20px;
+
+    z-index: 1001 !important;
+  }
+
+  /* ======================================
+     RESPONSIVE SPACING
+  ====================================== */
+
+  .hero {
+    padding-bottom: 90px;
+  }
+
+  body {
+    scroll-padding-bottom: 100px;
+  }
+
+}
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media (max-width: 380px) {
+
+  .mobile-dock {
+    width: calc(100% - 24px);
+    height: 70px;
+
+    padding-inline: 4px;
+
+    border-radius: 20px;
+  }
+
+  .dock-item {
+    font-size: 8px;
+    gap: 4px;
+  }
+
+  .dock-item svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .dock-ai {
+    width: 45px;
+    height: 45px;
+    border-radius: 15px;
+  }
+
+}
+
+
+/* ==========================================
+   PREMIUM GLASS MOBILE NAVIGATION
+========================================== */
+
+.mobile-dock {
+  display: none;
+}
+
+@media (max-width: 768px) {
+
+  .mobile-dock {
+    position: fixed;
+    z-index: 9999;
+
+    left: 50%;
+    bottom: max(14px, env(safe-area-inset-bottom));
+
+    transform: translateX(-50%);
+
+    width: min(94%, 560px);
+    height: 82px;
+
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    align-items: center;
+
+    padding: 7px 9px;
+
+    background:
+      linear-gradient(
+        145deg,
+        rgba(25, 39, 65, 0.94),
+        rgba(9, 19, 39, 0.97)
+      );
+
+    border: 1px solid rgba(145, 180, 255, 0.22);
+    border-radius: 28px;
+
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+
+    box-shadow:
+      0 15px 45px rgba(0, 0, 0, 0.42),
+      inset 0 1px 1px rgba(255, 255, 255, 0.09),
+      0 0 25px rgba(42, 112, 255, 0.08);
+
+    isolation: isolate;
+  }
+
+  /* ======================================
+     ANIMATED TOP LIGHT
+  ====================================== */
+
+  .dock-light {
+    position: absolute;
+
+    top: -1px;
+    left: 12%;
+
+    width: 76%;
+    height: 2px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+      90deg,
+      transparent,
+      #36dfff,
+      #438bff,
+      #36dfff,
+      transparent
+    );
+
+    filter: blur(1px);
+
+    opacity: 0.85;
+
+    animation: dock-light-move 4s ease-in-out infinite;
+
+    pointer-events: none;
+  }
+
+  @keyframes dock-light-move {
+    0%, 100% {
+      opacity: 0.35;
+      transform: scaleX(0.65);
+    }
+
+    50% {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+  }
+
+  /* ======================================
+     NORMAL NAVIGATION ITEMS
+  ====================================== */
+
+  .dock-item {
+    position: relative;
+
+    width: 100%;
+    height: 65px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    color: #9caac2;
+    text-decoration: none;
+
+    border-radius: 18px;
+
+    transition:
+      color 0.35s ease,
+      transform 0.35s ease;
+  }
+
+  .dock-icon {
+    width: 30px;
+    height: 27px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition:
+      transform 0.35s cubic-bezier(.2,.8,.2,1),
+      filter 0.35s ease;
+  }
+
+  .dock-item svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  .dock-item > span {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1px;
+
+    transition:
+      color 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  /* Active navigation */
+
+  .dock-item.is-active:not(.dock-work) {
+    color: #48dfff;
+  }
+
+  .dock-item.is-active:not(.dock-work) .dock-icon {
+    filter: drop-shadow(
+      0 0 7px rgba(54, 217, 255, 0.65)
+    );
+
+    transform: translateY(-2px);
+  }
+
+  .dock-item.is-active:not(.dock-work) > span {
+    color: #65dcff;
+  }
+
+  /* Active dot */
+
+  .dock-dot {
+    position: absolute;
+
+    bottom: -1px;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #42dcff;
+
+    box-shadow:
+      0 0 7px #42dcff,
+      0 0 14px rgba(66, 220, 255, 0.6);
+
+    animation: dock-dot-in 0.35s ease both;
+  }
+
+  @keyframes dock-dot-in {
+    from {
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* ======================================
+     CENTER WORK BUTTON
+  ====================================== */
+
+  .dock-work {
+    z-index: 2;
+
+    gap: 6px;
+
+    transform: translateY(-7px);
+  }
+
+  .dock-work .dock-icon {
+    width: 48px;
+    height: 48px;
+
+    border-radius: 17px;
+
+    color: #fff;
+
+    background: linear-gradient(
+      145deg,
+      #35cfff,
+      #2677ff 75%
+    );
+
+    border: 1px solid rgba(125, 225, 255, 0.75);
+
+    box-shadow:
+      0 0 0 4px rgba(43, 147, 255, 0.12),
+      0 0 20px rgba(39, 135, 255, 0.4),
+      inset 0 1px 2px rgba(255, 255, 255, 0.4);
+
+    animation: work-glow 3s ease-in-out infinite;
+  }
+
+  .dock-work .dock-icon svg {
+    width: 22px;
+    height: 22px;
+    stroke-width: 2;
+  }
+
+  .dock-work > span {
+    color: #d8eaff;
+    font-weight: 700;
+  }
+
+  .dock-work .dock-dot {
+    bottom: -1px;
+  }
+
+  /* Work glow animation */
+
+  @keyframes work-glow {
+    0%, 100% {
+      box-shadow:
+        0 0 0 3px rgba(43, 147, 255, 0.10),
+        0 0 15px rgba(39, 135, 255, 0.28),
+        inset 0 1px 2px rgba(255, 255, 255, 0.4);
+    }
+
+    50% {
+      box-shadow:
+        0 0 0 5px rgba(43, 147, 255, 0.14),
+        0 0 25px rgba(39, 135, 255, 0.55),
+        inset 0 1px 2px rgba(255, 255, 255, 0.4);
+    }
+  }
+
+  /* Active Work */
+
+  .dock-work.work-active .dock-icon {
+    background: linear-gradient(
+      145deg,
+      #43e5ff,
+      #2865ff
+    );
+
+    transform: translateY(-3px) scale(1.06);
+  }
+
+  .dock-work.work-active > span {
+    color: #48dfff;
+  }
+
+  /* ======================================
+     TOUCH INTERACTION
+  ====================================== */
+
+  .dock-item:active {
+    transform: scale(0.92);
+  }
+
+  .dock-work:active {
+    transform: translateY(-7px) scale(0.92);
+  }
+
+  /* ======================================
+     SMALL MOBILE
+  ====================================== */
+
+  @media (max-width: 380px) {
+
+    .mobile-dock {
+      width: 96%;
+      height: 76px;
+      padding: 5px;
+      border-radius: 24px;
+    }
+
+    .dock-item {
+      height: 60px;
+      gap: 5px;
+    }
+
+    .dock-icon {
+      width: 27px;
+      height: 24px;
+    }
+
+    .dock-item svg {
+      width: 19px;
+      height: 19px;
+    }
+
+    .dock-item > span {
+      font-size: 9px;
+    }
+
+    .dock-work .dock-icon {
+      width: 43px;
+      height: 43px;
+      border-radius: 15px;
+    }
+  }
+}
+
+/* ==========================================
+   ACCESSIBILITY
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .dock-light,
+  .dock-work .dock-icon,
+  .dock-dot {
+    animation: none !important;
+  }
+
+  .dock-item,
+  .dock-icon,
+  .dock-item > span {
+    transition: none !important;
+  }
+}
+
+
+
+/* ==========================================
+   PREMIUM CURVED MOBILE NAVIGATION
+========================================== */
+
+.mobile-dock {
+  position: fixed;
+  left: 50%;
+  bottom: max(14px, env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+
+  width: min(92%, 520px);
+  height: 76px;
+
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+
+  padding: 0 10px;
+
+  background: rgba(10, 20, 43, 0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  border: 1px solid rgba(140, 175, 230, 0.23);
+  border-radius: 28px;
+
+  box-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  z-index: 9999;
+}
+
+/* Individual navigation items */
+
+.dock-item {
+  position: relative;
+  isolation: isolate;
+
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  color: #8998b5;
+  text-decoration: none;
+
+  transition:
+    color 0.35s ease,
+    transform 0.35s ease;
+}
+
+/* Icon */
+
+.dock-icon {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    transform 0.35s cubic-bezier(.2,.8,.2,1),
+    color 0.35s ease;
+}
+
+/* Label */
+
+.dock-label {
+  position: relative;
+  z-index: 2;
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* ==========================================
+   SELECTED BUTTON CURVE
+========================================== */
+
+.dock-item.is-active {
+  color: #52dfff;
+  transform: translateY(-5px);
+}
+
+/* Raised curved background */
+
+.dock-item.is-active::before {
+  content: "";
+
+  position: absolute;
+  z-index: 0;
+
+  width: 76px;
+  height: 43px;
+
+  top: -7px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  background: rgba(19, 43, 69, 0.98);
+
+  border-radius: 50% 50% 0 0;
+
+  border-top: 2px solid #48dfff;
+
+  box-shadow:
+    0 -5px 16px rgba(42, 208, 255, 0.13);
+
+  animation: dockCurveAppear 0.4s ease;
+}
+
+/* Neon curve */
+
+.dock-item.is-active::after {
+  content: "";
+
+  position: absolute;
+  z-index: 1;
+
+  width: 76px;
+  height: 43px;
+
+  top: -7px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  border-radius: 50% 50% 0 0;
+
+  border-top: 1px solid rgba(83, 231, 255, 0.9);
+
+  pointer-events: none;
+}
+
+/* Selected icon */
+
+.dock-item.is-active .dock-icon {
+  color: #55e4ff;
+
+  transform: translateY(-2px);
+
+  filter: drop-shadow(
+    0 0 8px rgba(58, 220, 255, 0.65)
+  );
+}
+
+/* Selected label */
+
+.dock-item.is-active .dock-label {
+  color: #66e5ff;
+}
+
+/* Active indicator */
+
+.dock-dot {
+  position: absolute;
+
+  bottom: 5px;
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #50dfff;
+
+  box-shadow:
+    0 0 8px #50dfff,
+    0 0 15px rgba(80, 223, 255, 0.7);
+
+  animation: dockDotAppear 0.3s ease;
+}
+
+/* ==========================================
+   ANIMATIONS
+========================================== */
+
+@keyframes dockCurveAppear {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scaleX(0.65);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scaleX(1);
+  }
+}
+
+@keyframes dockDotAppear {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Hover */
+
+@media (hover: hover) {
+  .dock-item:not(.is-active):hover {
+    color: #d9eaff;
+  }
+
+  .dock-item:not(.is-active):hover .dock-icon {
+    transform: translateY(-3px);
+  }
+}
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media (max-width: 380px) {
+  .mobile-dock {
+    width: 94%;
+    height: 70px;
+    padding-inline: 5px;
+    border-radius: 23px;
+  }
+
+  .dock-label {
+    font-size: 9px;
+  }
+
+  .dock-item.is-active::before,
+  .dock-item.is-active::after {
+    width: 65px;
+  }
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-dock *,
+  .mobile-dock *::before,
+  .mobile-dock *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
