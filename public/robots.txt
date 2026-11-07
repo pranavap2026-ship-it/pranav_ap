@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pranavap.vercel.app/sitemap.xml
