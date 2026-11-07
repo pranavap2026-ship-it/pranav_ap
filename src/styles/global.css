@@ -666,7 +666,7 @@ ol, ul { list-style: none; }
 
 .ct-footer-logo {
   display: inline-block;
-  color: #f4f7ff;
+  color: #3afe6b;
   font-size: 38px;
   font-weight: 850;
   letter-spacing: -2px;
@@ -685,7 +685,7 @@ ol, ul { list-style: none; }
 .ct-footer-brand p {
   max-width: 360px;
   margin-top: 16px;
-  color: #96a5c0;
+  color: #1ceca6;
   font-size: 14px;
   line-height: 1.9;
 }
@@ -712,7 +712,7 @@ ol, ul { list-style: none; }
 .ct-footer-nav-links a,
 .ct-footer-social a {
   width: fit-content;
-  color: #bdcbe4;
+  color: #f18811;
   font-size: 14px;
   text-decoration: none;
   transition: color 0.25s ease, transform 0.25s ease;
@@ -1291,4 +1291,572 @@ ol, ul { list-style: none; }
   .contact .ct-form {
     padding: 15px 12px;
   }
+}
+
+
+
+
+
+
+
+
+
+/* ==========================================
+   PREMIUM RESPONSIVE HERO REDESIGN
+========================================== */
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  overflow: clip;
+}
+
+.hero .hr-stage {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 5% 65px;
+}
+
+.hero .hr-grid {
+  width: min(1180px, 100%);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  align-items: center;
+  gap: clamp(35px, 6vw, 90px);
+}
+
+/* ==========================================
+   LEFT CONTENT
+========================================== */
+
+.hero .hr-copy {
+  position: relative;
+  z-index: 3;
+  min-width: 0;
+}
+
+.hero .hr-hello {
+  font-size: clamp(17px, 1.6vw, 22px);
+  margin-bottom: 15px;
+}
+
+.hero .hr-name {
+  font-size: clamp(65px, 8vw, 112px);
+  line-height: 0.95;
+  letter-spacing: -0.065em;
+  margin: 0 0 22px;
+  overflow: hidden;
+}
+
+.hero .hr-name-text {
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+
+.hero .ch-mask {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.hero .ch {
+  display: inline-block;
+}
+
+.hero .hr-roleline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  line-height: 1.8;
+}
+
+.hero .hr-roleline i {
+  color: #3984ff;
+  font-style: normal;
+}
+
+.hero .hr-sub {
+  max-width: 480px;
+  margin-top: 20px;
+  font-size: 15px;
+  line-height: 1.85;
+  color: #a9b9d5;
+}
+
+.hero .hr-sub b {
+  color: #ffffff;
+}
+
+/* ==========================================
+   STATISTICS
+========================================== */
+
+.hero .hr-counts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  padding: 0;
+  margin: 30px 0;
+  list-style: none;
+}
+
+.hero .hr-counts li {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.hero .hr-counts b {
+  color: #6da4ff;
+  font-size: clamp(27px, 3vw, 39px);
+  font-weight: 850;
+  line-height: 1;
+}
+
+.hero .hr-counts span {
+  color: #9aaac5;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* ==========================================
+   CTA BUTTONS
+========================================== */
+
+.hero .hr-ctas {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 13px;
+  margin-top: 30px;
+}
+
+.hero .hr-ctas .btn {
+  min-height: 49px;
+  padding: 13px 22px;
+  font-size: 14px;
+  border-radius: 13px;
+  justify-content: center;
+}
+
+/* ==========================================
+   RIGHT PORTRAIT
+========================================== */
+
+.hero .hr-visual {
+  position: relative;
+  width: 100%;
+  max-width: 470px;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+.hero .hr-blob {
+  position: absolute;
+  width: 110%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle,
+      rgba(47, 119, 255, 0.30),
+      rgba(39, 104, 226, 0.10) 48%,
+      transparent 72%
+    );
+  filter: blur(15px);
+  pointer-events: none;
+}
+
+.hero .hr-person {
+  position: relative;
+  width: min(100%, 390px);
+  aspect-ratio: 0.78;
+  overflow: hidden;
+  border-radius: 30px;
+  border: 7px solid rgba(255, 255, 255, 0.95);
+  background: #10213e;
+  box-shadow:
+    0 25px 80px rgba(0, 0, 0, 0.35),
+    0 0 55px rgba(48, 119, 255, 0.22);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.hero .hr-profile-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  transition: transform 0.7s ease;
+}
+
+@media (hover: hover) {
+  .hero .hr-person:hover .hr-profile-photo {
+    transform: scale(1.045);
+  }
+}
+
+.hero .hr-photo-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 55px 24px 24px;
+  color: #fff;
+  background: linear-gradient(
+    transparent,
+    rgba(3, 12, 31, 0.92)
+  );
+}
+
+.hero .hr-photo-caption-kicker {
+  font-size: 12px;
+  color: #a8c9ff;
+}
+
+.hero .hr-photo-caption strong {
+  font-size: clamp(23px, 3vw, 32px);
+  letter-spacing: -1px;
+}
+
+.hero .hr-photo-caption-role {
+  color: #c0d0ed;
+  font-size: 14px;
+}
+
+/* ==========================================
+   HANDWRITTEN NOTE
+========================================== */
+
+.hero .hr-note {
+  position: absolute;
+  right: -55px;
+  bottom: 60px;
+  z-index: 3;
+  color: #b6d2ff;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.hero .hr-note svg {
+  max-width: 110px;
+}
+
+/* ==========================================
+   SCROLL INDICATOR
+========================================== */
+
+.hero .scroll-cue {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #8ea7cd;
+  font-size: 11px;
+  text-decoration: none;
+}
+
+/* ==========================================
+   LARGE TABLETS
+========================================== */
+
+@media (max-width: 1100px) {
+
+  .hero .hr-stage {
+    padding-inline: 5%;
+  }
+
+  .hero .hr-grid {
+    gap: 35px;
+  }
+
+  .hero .hr-person {
+    width: min(100%, 340px);
+  }
+
+  .hero .hr-note {
+    right: -20px;
+  }
+
+}
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (max-width: 850px) {
+
+  .hero .hr-stage {
+    padding: 115px 5% 65px;
+  }
+
+  .hero .hr-grid {
+    grid-template-columns: 1fr 0.85fr;
+    gap: 25px;
+  }
+
+  .hero .hr-name {
+    font-size: clamp(55px, 8vw, 75px);
+  }
+
+  .hero .hr-roleline {
+    font-size: 11px;
+  }
+
+  .hero .hr-sub {
+    font-size: 13px;
+  }
+
+  .hero .hr-counts {
+    gap: 12px;
+  }
+
+  .hero .hr-counts b {
+    font-size: 29px;
+  }
+
+  .hero .hr-counts span {
+    font-size: 11px;
+  }
+
+  .hero .hr-person {
+    width: 100%;
+    border-width: 5px;
+    border-radius: 24px;
+  }
+
+  .hero .hr-note {
+    right: -10px;
+    bottom: 25px;
+    font-size: 13px;
+  }
+
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 600px) {
+
+  .hero {
+    min-height: auto;
+    overflow: hidden;
+  }
+
+  .hero .hr-stage {
+    min-height: auto;
+    padding: 105px 20px 70px;
+    display: block;
+  }
+
+  .hero .hr-grid {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 45px;
+  }
+
+  /* CONTENT */
+
+  .hero .hr-copy {
+    width: 100%;
+  }
+
+  .hero .hr-hello {
+    font-size: 17px;
+    margin-bottom: 13px;
+  }
+
+  .hero .hr-name {
+    font-size: clamp(49px, 12vw, 72px);
+    line-height: 1;
+    margin-bottom: 17px;
+  }
+
+  .hero .hr-roleline {
+    gap: 6px;
+    font-size: 10px;
+  }
+
+  .hero .hr-sub {
+    max-width: 100%;
+    font-size: 13px;
+    line-height: 1.75;
+    margin-top: 15px;
+  }
+
+  /* STATISTICS */
+
+  .hero .hr-counts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin: 25px 0;
+    padding: 17px 14px;
+    border: 1px solid rgba(120, 160, 230, 0.15);
+    border-radius: 17px;
+    background: rgba(9, 22, 47, 0.45);
+  }
+
+  .hero .hr-counts li {
+    gap: 6px;
+  }
+
+  .hero .hr-counts b {
+    font-size: 29px;
+  }
+
+  .hero .hr-counts span {
+    font-size: 10px;
+    line-height: 1.4;
+  }
+
+  /* BUTTONS */
+
+  .hero .hr-ctas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  .hero .hr-ctas .btn {
+    width: 100%;
+    min-height: 50px;
+    padding: 12px 10px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  /* PROFILE */
+
+  .hero .hr-visual {
+    width: min(85%, 330px);
+    margin: 0 auto;
+  }
+
+  .hero .hr-person {
+    width: 100%;
+    aspect-ratio: 0.82;
+    border-width: 5px;
+    border-radius: 23px;
+    transform: none !important;
+  }
+
+  .hero .hr-photo-caption {
+    padding: 45px 17px 18px;
+  }
+
+  .hero .hr-photo-caption-kicker {
+    font-size: 11px;
+  }
+
+  .hero .hr-photo-caption strong {
+    font-size: 24px;
+  }
+
+  .hero .hr-photo-caption-role {
+    font-size: 12px;
+  }
+
+  /* NOTE */
+
+  .hero .hr-note {
+    right: -20px;
+    bottom: 20px;
+    font-size: 12px;
+  }
+
+  .hero .hr-note svg {
+    max-width: 75px;
+  }
+
+  /* SCROLL */
+
+  .hero .scroll-cue {
+    display: none;
+  }
+
+}
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media (max-width: 380px) {
+
+  .hero .hr-stage {
+    padding-inline: 16px;
+  }
+
+  .hero .hr-grid {
+    gap: 35px;
+  }
+
+  .hero .hr-name {
+    font-size: 48px;
+  }
+
+  .hero .hr-counts {
+    padding: 14px 10px;
+    gap: 7px;
+  }
+
+  .hero .hr-counts b {
+    font-size: 25px;
+  }
+
+  .hero .hr-counts span {
+    font-size: 9px;
+  }
+
+  .hero .hr-ctas .btn {
+    font-size: 11px;
+  }
+
+  .hero .hr-visual {
+    width: 88%;
+  }
+
+  .hero .hr-note {
+    right: -18px;
+    font-size: 10px;
+  }
+
+}
+
+/* ==========================================
+   REDUCED MOTION
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .hero *,
+  .hero *::before,
+  .hero *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
 }
