@@ -28,7 +28,7 @@ export const heroCounts = [
 
 export const about = {
   // a fanned stack of photos: click it to shuffle through your roles
-  photos: ['img/photos/pranav-profile.jpg', 'img/photos/pranav-profile.jpg', 'img/photos/pranav-profile.jpg', 'img/photos/pranav-profile.jpg'],
+  photos: ['img/photos/pranav-profile.jpg', 'img/photos/lap.png', 'img/photos/pranav-profile.jpg', 'img/photos/pranav-profile.jpg'],
   // one role per photo, shown under it (click the stack to cycle)
   roles: ['Freelance Web Developer', 'AI App Builder', 'Full-Stack Developer', 'CSE Student'],
   paragraphs: [
